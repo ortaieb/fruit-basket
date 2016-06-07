@@ -10,7 +10,7 @@ class Checkout( val basket : Basket ) {
     basket
       .groupBy( item => item )
       .map( item => (item._1 -> item._2.size ) )
-      .map( item => item._1.price * item._2 )
+      .map( item => item._1.offer( item._2 ) )
       .sum
 
   }

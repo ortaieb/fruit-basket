@@ -19,15 +19,27 @@ class CheckoutSpec extends WordSpec with Matchers {
       }
 
       "return £6.00 for ten apples" in {
-        Checkout.items( List( Apple , Apple , Apple , Apple , Apple , Apple , Apple , Apple , Apple , Apple ) ).calculate should be ( BigDecimal( 6.0 ) )
+        Checkout.items( List( Apple , Apple , Apple , Apple , Apple , Apple , Apple , Apple , Apple , Apple ) ).calculate should be ( BigDecimal( 3.0 ) )
+      }
+
+      "return £1.20 for three apples" in {
+        Checkout.items( List( Apple , Apple , Apple ) ).calculate should be ( BigDecimal( 1.20 ) )
       }
 
       "return £0.50 for two oranges" in {
         Checkout.items( List( Orange , Orange ) ).calculate should be ( BigDecimal( 0.50 ) )
       }
 
+      "return £0.50 for three oranges" in {
+        Checkout.items( List( Orange , Orange , Orange ) ).calculate should be ( BigDecimal( 0.50 ) )
+      }
+
+      "return £0.75 for four oranges" in {
+        Checkout.items( List( Orange , Orange , Orange , Orange ) ).calculate should be ( BigDecimal( 0.75 ) )
+      }
+
       "return sum of mixed basket" in {
-        Checkout.items( List( Apple , Apple , Orange , Apple , Orange ) ).calculate should be ( BigDecimal( 2.30 ) )
+        Checkout.items( List( Apple , Apple , Orange , Apple , Orange ) ).calculate should be ( BigDecimal( 1.70 ) )
       }
     }
 
@@ -54,10 +66,11 @@ class CheckoutSpec extends WordSpec with Matchers {
     "complete task" should {
 
       "return calculated price of string basked input" in {
-        Checkout( "Orange" , "O" , "O" , "Apple" , "APPLE" , "A" , "Apple" ).calculate should be ( BigDecimal( 3.15 ) )
+        Checkout( "Orange" , "O" , "O" , "Apple" , "APPLE" , "A" , "Apple" ).calculate should be ( BigDecimal( 1.70 ) )
       }
 
     }
+
 
   }
 
