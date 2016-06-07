@@ -20,3 +20,7 @@ project/plugins/project/
 .idea/
 *.iml
 
+# Gradle
+.gradle
+build/
+
